@@ -30,3 +30,29 @@
 table {
   width: 100%;
 }
+
+.example-form-field {
+  width: 200px;
+}
+
+.example-form-field {
+  width: 200px;
+}
+
+.field{
+  width: 100%;
+  margin: 5px;
+}
+
+.field-conteiner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  height: inherit;
+  align-items: flex-end;
+  margin: 10px !important;
+}

@@ -1,7 +1,44 @@
 <div style="height: 100%;">
   <div class="form-container">
     <mat-card class="mat-card-container">
-      <mat-card-title>Agregar tarjeta</mat-card-title>
+      <mat-card-title>Agregar Tarjeta</mat-card-title>
+      <form [formGroup]="form" (ngSubmit)="agregarTarjeta">
+        <div class="field-conteiner">
+          <mat-form-field class="example-form-field" appearance="fill" class="field">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" matInput type="text" required>
+            <mat-error>El campo no puede ser vacio</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="fill" class="field">
+            <mat-label>Numero</mat-label>
+            <input maxlength="16" minlength="16" formControlName="numero" matInput type="text" required>
+            <mat-error>El campo no puede ser vacio</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill" class="example-form-field">
+            <mat-label>Elije una fecha</mat-label>
+            <input formControlName="fechaVencimiento" matInput [matDatepicker]="datepicker" required>
+            <mat-error>El campo no puede ser vacio</mat-error>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancelar</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Guardar</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="btn-container">
+          <button color="primary" (click)="agregarTarjeta()" type="submit" mat-raised-button
+            [disabled]="form.invalid">Guardar</button>
+        </div>
+
+      </form>
     </mat-card>
     <mat-card class="mat-card-container">
       <mat-card-title>Listado de tarjetas</mat-card-title>
@@ -12,21 +49,21 @@
       <div class="mat-elevation-z8">
         <div style="display: flex; flex-direction: column; height: calc(100% - 60px);">
           <div style="height: calc(100% - 75px); overflow: auto; overflow-x: hidden;">
-            <table mat-table>
+            <table mat-table [dataSource]="dataSource">
 
               <ng-container matColumnDef="nombre">
                 <th style="border-radius: 15px 0 0 0;" mat-header-cell *matHeaderCellDef> Nombre </th>
-                <td mat-cell> </td>
+                <td mat-cell *matCellDef="let element of listarTarjetas"> {{element.nombre}}> </td>
               </ng-container>
 
               <ng-container matColumnDef="numero">
                 <th mat-header-cell *matHeaderCellDef> Numero </th>
-                <td mat-cell> </td>
+                <td mat-cell *matCellDef="let element of listarTarjetas"> {{element.numero}} </td>
               </ng-container>
 
               <ng-container matColumnDef="fechaVencimiento">
                 <th mat-header-cell *matHeaderCellDef> Fecha de Vencimietno </th>
-                <td mat-cell> </td>
+                <td mat-cell *matCellDef="let element of listarTarjetas"> {{element.fechaVencimiento}} </td>
               </ng-container>
 
               <!--configuracion de la tabla-->
