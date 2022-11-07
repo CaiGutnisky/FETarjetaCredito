@@ -1,0 +1,48 @@
+<div style="height: 100%;">
+  <div class="form-container">
+    <mat-card class="mat-card-container">
+      <mat-card-title>Agregar tarjeta</mat-card-title>
+    </mat-card>
+    <mat-card class="mat-card-container">
+      <mat-card-title>Listado de tarjetas</mat-card-title>
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput placeholder="Buscar" #input>
+      </mat-form-field>
+      <div class="mat-elevation-z8">
+        <div style="display: flex; flex-direction: column; height: calc(100% - 60px);">
+          <div style="height: calc(100% - 75px); overflow: auto; overflow-x: hidden;">
+            <table mat-table>
+
+              <ng-container matColumnDef="nombre">
+                <th style="border-radius: 15px 0 0 0;" mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell> </td>
+              </ng-container>
+
+              <ng-container matColumnDef="numero">
+                <th mat-header-cell *matHeaderCellDef> Numero </th>
+                <td mat-cell> </td>
+              </ng-container>
+
+              <ng-container matColumnDef="fechaVencimiento">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Vencimietno </th>
+                <td mat-cell> </td>
+              </ng-container>
+
+              <!--configuracion de la tabla-->
+              <tr mat-header-row *matHeaderRowDef="columnasBases"></tr>
+              <tr mat-row class="fila" *matRowDef="let row; columns: columnasBases;"></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay datos para mostrar..</td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <mat-paginator [pageSize]="10" style="border-radius: 0 0 15px 15px;"></mat-paginator>
+      </div>
+    </mat-card>
+  </div>
+</div>

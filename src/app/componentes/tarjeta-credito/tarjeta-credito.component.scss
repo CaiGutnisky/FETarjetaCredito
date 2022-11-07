@@ -1,0 +1,32 @@
+.card-container {
+  height: calc(50%);
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-right: 15px;
+  gap: 10px;
+}
+
+.mat-card-container {
+  width: 50%;
+}
+
+.fila {
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-bottom: 1px solid #76c8c8;
+  border-top: 1px solid #76c8c8;
+
+}
+
+table {
+  width: 100%;
+}
